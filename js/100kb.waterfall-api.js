@@ -10,10 +10,11 @@ document.querySelector("#messages").insertAdjacentHTML(
   `
 );
 
+// Simulate API request.
 (async () => {
   // Simulate delay from server.
   const { promise, resolve } = Promise.withResolvers();
-  setTimeout(resolve, 200);
+  setTimeout(resolve, 30);
   await promise;
 
   // Request API.
