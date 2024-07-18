@@ -11,15 +11,17 @@ document.querySelector("#messages").insertAdjacentHTML(
 );
 
 (async () => {
-  // Request API.
-  const response = await fetch("./js/api.json?ts=" + Date.now()).then((res) =>
-    res.json()
-  );
-  console.log(response);
-  // Simulate extra delay from server.
+  // Simulate delay from server.
   const { promise, resolve } = Promise.withResolvers();
   setTimeout(resolve, 200);
   await promise;
+
+  // Request API.
+  const url = "./js/api.json?ts=" + Date.now();
+  const response = await fetch(url).then((res) => res.json());
+  console.log(response);
+
+  // Render latency.
   document.querySelector("#messages").insertAdjacentHTML(
     "beforeend",
     `
