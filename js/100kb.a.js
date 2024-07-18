@@ -9,3 +9,26 @@ document.querySelector("#messages").insertAdjacentHTML(
 </div>
 `
 );
+
+// Simulate API request.
+(async () => {
+  // Simulate delay from server.
+  const { promise, resolve } = Promise.withResolvers();
+  setTimeout(resolve, 30);
+  await promise;
+
+  // Request API.
+  const url = "./js/api.json?ts=" + Date.now();
+  const response = await fetch(url).then((res) => res.json());
+  console.log(response);
+
+  // Render latency.
+  document.querySelector("#messages").insertAdjacentHTML(
+    "beforeend",
+    `
+<div>
+API response ${Date.now() - window.performance.timing.navigationStart}
+</div>
+`
+  );
+})();
