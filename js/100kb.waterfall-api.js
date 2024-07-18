@@ -12,8 +12,14 @@ document.querySelector("#messages").insertAdjacentHTML(
 
 (async () => {
   // Request API.
-  const response = await fetch("./js/api.json").then((res) => res.json());
+  const response = await fetch("./js/api.json?ts=" + Date.now()).then((res) =>
+    res.json()
+  );
   console.log(response);
+  // Simulate extra delay from server.
+  const { promise, resolve } = Promise.withResolvers();
+  setTimeout(resolve, 200);
+  await promise;
   document.querySelector("#messages").insertAdjacentHTML(
     "beforeend",
     `
