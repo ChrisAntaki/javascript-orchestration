@@ -42,7 +42,7 @@ API response ${Date.now() - window.performance.timing.navigationStart}
 
   // Load main.
   const el = document.createElement("script");
-  el.src = `./js/100kb.main.js`;
+  el.src = `./js/90kb.main.js`;
   el.async = true;
   document.head.insertAdjacentElement("beforeend", el);
 })();
