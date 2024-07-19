@@ -12,13 +12,13 @@ document.querySelector("#messages").insertAdjacentHTML(
 
 // Simulate API request.
 (async () => {
-  promise.then(async () => {
-    // Create global promise.
-    const { promise: globalPromise, resolve: globalResolve } =
-      Promise.withResolvers();
-    window.API_PROMISE = globalPromise;
+  // Create global promise.
+  const { promise: globalPromise, resolve: globalResolve } =
+    Promise.withResolvers();
+  window.API_PROMISE = globalPromise;
 
-    // Request API.
+  // Request API.
+  (async () => {
     const url = "./js/api.json?ts=" + Date.now();
     const response = await fetch(url).then((res) => res.json());
     // Simulate delay from server.
@@ -38,7 +38,7 @@ API response ${Date.now() - window.performance.timing.navigationStart}
 </div>
 `
     );
-  });
+  })();
 
   // Load main.
   const el = document.createElement("script");
