@@ -12,19 +12,22 @@ document.querySelector("#messages").insertAdjacentHTML(
 
 // Simulate API request.
 (async () => {
-  // Simulate delay from server.
-  const { promise, resolve } = Promise.withResolvers();
-  setTimeout(resolve, 30);
   promise.then(async () => {
     // Create global promise.
-    const { promise, resolve } = Promise.withResolvers();
-    window.API_PROMISE = promise;
+    const { promise: globalPromise, resolve: globalResolve } =
+      Promise.withResolvers();
+    window.API_PROMISE = globalPromise;
 
     // Request API.
     const url = "./js/api.json?ts=" + Date.now();
     const response = await fetch(url).then((res) => res.json());
+    // Simulate delay from server.
+    const { promise: delayPromise, resolve: delayResolve } =
+      Promise.withResolvers();
+    setTimeout(delayResolve, 30);
+    await delayPromise;
     console.log(response);
-    resolve(response);
+    globalResolve(response);
 
     // Render latency.
     document.querySelector("#messages").insertAdjacentHTML(
