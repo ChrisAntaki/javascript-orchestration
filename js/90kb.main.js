@@ -5,7 +5,7 @@ document.querySelector("#messages").insertAdjacentHTML(
   "beforeend",
   `
   <div>
-  90kb.main ${Date.now() - window.performance.timing.navigationStart}
+  90kb.main ${Date.now() - window.performance.timing.domLoading}
   </div>
   `
 );
@@ -19,7 +19,7 @@ document.querySelector("#messages").insertAdjacentHTML(
     `
     <div>
     main processed global promise ${
-      Date.now() - window.performance.timing.navigationStart
+      Date.now() - window.performance.timing.domLoading
     }
     </div>
     `

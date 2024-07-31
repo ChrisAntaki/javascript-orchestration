@@ -5,7 +5,7 @@ document.querySelector("#messages").insertAdjacentHTML(
   "beforeend",
   `
   <div>
-  10kb.bootloader ${Date.now() - window.performance.timing.navigationStart}
+  10kb.bootloader ${Date.now() - window.performance.timing.domLoading}
   </div>
   `
 );
@@ -34,7 +34,7 @@ document.querySelector("#messages").insertAdjacentHTML(
       "beforeend",
       `
 <div>
-API response ${Date.now() - window.performance.timing.navigationStart}
+API response ${Date.now() - window.performance.timing.domLoading}
 </div>
 `
     );

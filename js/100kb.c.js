@@ -5,7 +5,7 @@ document.querySelector("#messages").insertAdjacentHTML(
   "beforeend",
   `
   <div>
-  100kb.c ${Date.now() - window.performance.timing.navigationStart}
+  100kb.c ${Date.now() - window.performance.timing.domLoading}
   </div>
   `
 );

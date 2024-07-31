@@ -14,7 +14,7 @@ var junk =
     "beforeend",
     `
 <div>
-10kb.unlocker ${Date.now() - window.performance.timing.navigationStart}
+10kb.unlocker ${Date.now() - window.performance.timing.domLoading}
 </div>
 `
   );
