@@ -15,10 +15,11 @@ document.querySelector("#messages").insertAdjacentHTML(
     Promise.withResolvers();
   window.API_PROMISE = globalPromise;
 
-  // Request API.
   (async () => {
+    // Request API.
     const url = "./js/api.json?ts=" + Date.now();
     const response = await fetch(url).then((res) => res.json());
+
     // Simulate delay from server.
     const { promise: delayPromise, resolve: delayResolve } =
       Promise.withResolvers();
